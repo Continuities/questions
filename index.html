@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+      }
+      .question {
+        position: absolute;
+        transition: opacity 3s, transform 10s;
+        opacity: 0;
+        font-family: sans-serif;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='container'>
+
+    </div>
+    <script>
+      const questions = [
+        'What is important?',
+        'What happens after I die?',
+        'Am I good enough?',
+        'Are we equal?',
+        'Am I important?',
+        'Who likes me?'
+      ];
+
+      const c = document.getElementById('container');
+
+      const showQuestion = index => {
+        const q = document.createElement('div');
+        q.className = 'question';
+        q.innerHTML = questions[index];
+        q.style.fontSize = `${32 + (Math.random() * 64)}px`;
+
+        c.appendChild(q);
+
+        q.style.top = `${Math.random() * (c.clientHeight - q.clientHeight)}px`;
+        q.style.left = `${Math.random() * (c.clientWidth - q.clientWidth)}px`;
+        q.style.opacity = 1;
+        q.style.transform = `translate(${Math.random() * 100}px, ${Math.random() * 100}px)`;
+
+        const time = (3 + Math.random() * 7) * 1000;
+
+        setTimeout(() => {
+          q.style.opacity = 0;
+        }, time);
+        setTimeout(() => {
+          c.removeChild(q);
+        }, time + 3000);
+      };
+
+      const showRandom = window.show = () => showQuestion(Math.floor(Math.random() * questions.length));
+
+      (function show() {
+        setTimeout(show, 2000 + Math.random() * 3000);
+        showRandom();
+      })();
+
+      document.body.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen();
+        } 
+        else if (document.exitFullscreen) {
+          document.exitFullscreen(); 
+        }
+      });
+    </script>
+  </body>
+</html>
