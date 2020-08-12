@@ -11,6 +11,7 @@
         width: 100vh;
         height: 100vw;
         position: absolute;
+        transition: background-color 5s;
         transform-origin: top left;
         transform: rotate(90deg) translateY(-100%);
         cursor: none;
@@ -35,7 +36,31 @@
         'Am I good enough?',
         'Are we equal?',
         'Am I important?',
-        'Who likes me?'
+        'Who likes me?',
+        'Will this burn well?',
+        'How long will this burn?',
+        'Will this burn too well?',
+        'What now?',
+        'What next?',
+        'Why?',
+        'Why me?',
+        'When will it end?',
+        'Are we alone?',
+        'How much is too much?',
+        'Who is driving?',
+        'How can that be?',
+        `What's for dinner?`,
+        'Is this real?',
+        'What is real?',
+        'Is this forever?',
+        'What have we done?',
+        'Is this enough questions?',
+        'What is god?',
+        'Why are you like this?',
+        'Why am I like this?',
+        'Why are we like this?',
+        'Will I forget this moment?',
+
       ];
 
       const c = document.getElementById('container');
@@ -78,6 +103,13 @@
           document.exitFullscreen(); 
         }
       });
+
+      const changeColour = window.colour = () => {
+        c.style.background = `hsl(${Math.floor(Math.random() * 360)}, 60%, 70%)`;
+      };
+
+      setInterval(changeColour, 5000);
+
     </script>
   </body>
 </html>
