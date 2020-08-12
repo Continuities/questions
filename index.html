@@ -5,11 +5,15 @@
       body, html {
         margin: 0;
         padding: 0;
+        overflow: hidden;
       }
       #container {
-        width: 100vw;
-        height: 100vh;
-        position: relative;
+        width: 100vh;
+        height: 100vw;
+        position: absolute;
+        transform-origin: top left;
+        transform: rotate(90deg) translateY(-100%);
+        cursor: none;
       }
       .question {
         position: absolute;
@@ -47,7 +51,7 @@
         q.style.top = `${Math.random() * (c.clientHeight - q.clientHeight)}px`;
         q.style.left = `${Math.random() * (c.clientWidth - q.clientWidth)}px`;
         q.style.opacity = 1;
-        q.style.transform = `translate(${Math.random() * 100}px, ${Math.random() * 100}px)`;
+        q.style.transform = `translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px)`;
 
         const time = (3 + Math.random() * 7) * 1000;
 
